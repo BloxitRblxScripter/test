@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #8b5cf6;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a78bfa;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #intro {
+            padding-top: 120px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #a78bfa;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #c4b5fd;
+        }
+
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .intro-text p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .game-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #8b5cf6;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .game-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .game-card p {
+            margin-bottom: 20px;
+        }
+
+        .game-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .game-link:hover {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+        }
+
+        .service-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            border: 1px solid #8b5cf6;
+        }
+
+        .service-description {
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .work-item {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid #7c3aed;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .work-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .work-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #4c1d95 0%, #6b21a8 100%);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c4b5fd;
+            font-weight: bold;
+        }
+
+        .pricing {
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+
+        .price-label {
+            color: #c4b5fd;
+        }
+
+        .price-value {
+            color: #a78bfa;
+            font-weight: bold;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid #8b5cf6;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .contact-card a:hover {
+            color: #c4b5fd;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .intro-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            section {
+                padding: 80px 20px;
+            }
+
+            .service-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#intro">Home</a>
+            <a href="#games">Games</a>
+            <a href="#scripting">Scripting</a>
+            <a href="#ui">UI Design</a>
+            <a href="#gfx">GFX</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="intro">
+        <div class="intro-content">
+            <img src="captain.png" alt="Profile Picture" class="profile-pic">
+            <div class="intro-text">
+                <h1>Bloxit</h1>
+                <p> Roblox Developer specializing in scripting, UI design, and High CTR GFX.</p>
+                <p>With 1.5+ years of experience in game development, I bring your Roblox visions to life with quality and precision.
+                    I offer services in Scripting,UI Design and High CTR GFX. 50% Upfront and Tax should be covered.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="games">
+        <h2>My Roblox Games</h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <h3>Be a lemonade Seller</h3>
+                <p>All Scripting and UI done by me</p>
+                <a href="https://www.roblox.com/games/86270622488354/Be-a-Lemonade-Seller" class="game-link">Play Now</a>
+            </div>
+            <div class="game-card">
+                <h3>Find The Italian Food</h3>
+                <p>All Scripting and UI done by me</p>
+                <a href="https://www.roblox.com/games/84629552415022/Find-The-Italian-Food" class="game-link">Play Now</a>
+            </div>
+            <div class="game-card">
+                <h3>Find The Cars Movie</h3>
+                <p>All Scripting and UI Done by me</p>
+                <a href="https://www.roblox.com/games/128616509904876/Find-The-Cars-Movie" class="game-link">Play Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="scripting">
+        <div class="service-section">
+            <h2>Scripting Services</h2>
+            <p class="service-description">
+                I offer professional Lua scripting services for Roblox. From simple scripts to complex game mechanics, I can handle projects of any scale. My expertise includes game logic, data management, server-client communication, and optimization for smooth gameplay.
+            </p>
+
+            <h3>Portfolio</h3>
+            <div class="work-gallery">
+                <div class="work-item">
+                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin-bottom: 10px;"></iframe>
+                    <p>Combat System</p>
+                </div>
+                <div class="work-item">
+                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin-bottom: 10px;"></iframe>
+                    <p>Inventory System</p>
+                </div>
+                <div class="work-item">
+                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px; margin-bottom: 10px;"></iframe>
+                    <p>Quest System</p>
+                </div>
+            </div>
+
+            <div class="pricing">
+                <h3>Pricing</h3>
+                <div class="price-item">
+                    <span class="price-label">Simple Script</span>
+                    <span class="price-value">R$ 500 - 1,000</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Medium Complexity</span>
+                    <span class="price-value">R$ 1,000 - 3,000</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Complex System</span>
+                    <span class="price-value">R$ 3,000+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ui">
+        <div class="service-section">
+            <h2>UI Design Services</h2>
+            <p class="service-description">
+                I create beautiful user interfaces that enhance player experience. My UI designs are modern, intuitive, and optimized for all screen sizes. I import and scale all UI. I do not design Vectors
+            </p>
+
+            <h3>Portfolio</h3>
+            <div class="work-gallery">
+                <div class="work-item">
+                    <img src="playtime.png" alt="Main Menu UI" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);">
+                    <p>Playtime Rewards GUI</p>
+                </div>
+                <div class="work-item">
+                    <img src="mainscreen.png" alt="Shop Interface UI" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);">
+                    <p>Main Screen UI</p>
+                </div>
+                <div class="work-item">
+                    <img src="upgrades.png" alt="HUD Design UI" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);">
+                    <p>Upgrades GUI</p>
+                </div>
+            </div>
+
+            <div class="pricing">
+                <h3>Pricing</h3>
+                <div class="price-item">
+                    <span class="price-label">Single Frame</span>
+                    <span class="price-value">R$ 300-800</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Full Frame with Buttons and Other elements</span>
+                    <span class="price-value">R$ 1,000-2500</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Complete UI for your game</span>
+                    <span class="price-value">R$ 3,000+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gfx">
+        <div class="service-section">
+            <h2>GFX Services</h2>
+            <p class="service-description">
+                I create vibrant and colorful cartoony GFX for your game to get high CTR. I would require any specific assets to be included in the GFX and a reference if possible.
+            </p>
+
+            <h3>Portfolio</h3>
+            <div class="work-gallery">
+                <div class="work-item">
+                    <img src="mining.png" alt="Mining Game Thumbnail" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);">
+                    <p>Mining Game Thumbnail</p>
+                </div>
+                <div class="work-item">
+                    <img src="caricon.png" alt="Find the cars game Icon" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);">
+                    <p>Find The Cars game Icon</p>
+                </div>
+                <div class="work-item">
+                    <img src="carthumb.png" alt="Find the cars game Thumbnail" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);">
+                    <p>Find The Cars game Thumbnail</p>
+                </div>
+            </div>
+
+            <div class="pricing">
+                <h3>Pricing</h3>
+                <div class="price-item">
+                    <span class="price-label">Thumbnail</span>
+                    <span class="price-value">R$ 1500-3500</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Icon</span>
+                    <span class="price-value">R$ 1,000 - 2,500</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Rescaled Icon + Thumbnail</span>
+                    <span class="price-value">R$ 3000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <a href="mailto:scmjadoogaliya911@gmail.com">scmjadoogaliya911@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Discord</h3>
+                <a href="#">xxruu007xx</a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">🎮</div>
+                <h3>Roblox</h3>
+                <a href="https://www.roblox.com/users/3689469458/profile">@xxruu007xx</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
